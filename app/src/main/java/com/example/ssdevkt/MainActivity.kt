@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         mLatTxtView.text = String.format("lat: %s", getCoord(latTxt.toDouble()))
         mLonTxtView.text = String.format("lon: %s", getCoord(lonTxt.toDouble()))
-        hideSofeKbd()
+        hideSoftKbd()
         mShowMapBtn.isEnabled = true
     }
 
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(startMapsIntent)
     }
 
-    private fun hideSofeKbd() {
+    private fun hideSoftKbd() {
         val view: View = this.currentFocus ?: return
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
