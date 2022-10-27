@@ -18,13 +18,13 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = ".Main"
     }
 
-    lateinit var mLatEditTxt: EditText
-    lateinit var mLonEditTxt: EditText
-    lateinit var mLatTxtView: TextView
-    lateinit var mLonTxtView: TextView
-    lateinit var mShowMapBtn: Button
-    lateinit var latTxt: String
-    lateinit var lonTxt: String
+    private lateinit var mLatEditTxt: EditText
+    private lateinit var mLonEditTxt: EditText
+    private lateinit var mLatTxtView: TextView
+    private lateinit var mLonTxtView: TextView
+    private lateinit var mShowMapBtn: Button
+    private lateinit var latTxt: String
+    private lateinit var lonTxt: String
 
 
     fun getCoord(coord: Double): String {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         latTxt = mLatEditTxt.text.toString()
         lonTxt = mLonEditTxt.text.toString()
 
-        if (latTxt?.isEmpty() == true || lonTxt?.isEmpty() == true) {
+        if (latTxt.isEmpty() || lonTxt.isEmpty()) {
             val toast = Toast(applicationContext)
             toast.setText("A field is empty!")
             toast.duration = Toast.LENGTH_SHORT
@@ -62,8 +62,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        mLatTxtView.setText("lat: " + getCoord(latTxt.toDouble()))
-        mLonTxtView.setText("lon: " + getCoord(lonTxt.toDouble()))
+        mLatTxtView.text = String.format("lat: %s", getCoord(latTxt.toDouble()))
+        mLonTxtView.text = String.format("lon: %s", getCoord(lonTxt.toDouble()))
         hideSofeKbd()
         mShowMapBtn.isEnabled = true
     }
