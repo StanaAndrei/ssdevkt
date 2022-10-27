@@ -15,7 +15,7 @@ import kotlin.math.floor
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val TAG = ".Main"
+        private const val TAG = ".Main"
     }
 
     lateinit var mLatEditTxt: EditText
