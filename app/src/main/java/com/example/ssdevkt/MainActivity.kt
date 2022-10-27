@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var lonTxt: String
 
 
-    fun getCoord(coord: Double): String {
+    private fun getCoord(coord: Double): String {
         val coordDeg: Int = coord.toInt()
         val coordMins: Double = (coord - floor(coord)) * 60
         val coordSecs: Double = (coordMins - floor(coordMins)) * 60
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         mLonTxtView = findViewById(R.id.lon_txt)
     }
 
-    fun handleConvertClick() {
+    private fun handleConvertClick() {
         latTxt = mLatEditTxt.text.toString()
         lonTxt = mLonEditTxt.text.toString()
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         mShowMapBtn.isEnabled = true
     }
 
-    fun handleShowClick() {
+    private fun handleShowClick() {
         val intent = Intent()
         intent.setClass(applicationContext, MapActivity::class.java)
         intent.putExtra("lat", latTxt.toDouble())
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun hideSofeKbd() {
+    private fun hideSofeKbd() {
         val view: View = this.currentFocus ?: return
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
