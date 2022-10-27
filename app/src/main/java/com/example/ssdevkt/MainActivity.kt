@@ -69,11 +69,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun handleShowClick() {
-        val intent = Intent()
-        intent.setClass(applicationContext, MapActivity::class.java)
-        intent.putExtra("lat", latTxt.toDouble())
-        intent.putExtra("lon", lonTxt.toDouble())
-        startActivity(intent)
+        val startMapsIntent = Intent()
+        startMapsIntent.setClass(applicationContext, MapActivity::class.java)
+        startMapsIntent.putExtra("lat", latTxt.toDouble())
+        startMapsIntent.putExtra("lon", lonTxt.toDouble())
+        startActivity(startMapsIntent)
     }
 
     private fun hideSofeKbd() {
