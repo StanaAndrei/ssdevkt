@@ -12,7 +12,7 @@ class MapActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_map_activity)
+        setContentView(R.layout.activity_map)
         mLat = intent.getDoubleExtra("lat", .0)
         mLon = intent.getDoubleExtra("lon", .0)
 
