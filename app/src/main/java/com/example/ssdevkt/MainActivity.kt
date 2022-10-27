@@ -1,6 +1,7 @@
 package com.example.ssdevkt
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -21,6 +22,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var mLonEditTxt: EditText
     lateinit var mLatTxtView: TextView
     lateinit var mLonTxtView: TextView
+    lateinit var mShowMapBtn: Button
+    lateinit var latTxt: String
+    lateinit var lonTxt: String
+
 
     fun getCoord(coord: Double): String {
         val coordDeg: Int = coord.toInt()
@@ -36,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         val convertBtn = findViewById<Button>(R.id.convert_btn)
         convertBtn.setOnClickListener{ handleConvertClick() }
 
+        mShowMapBtn = findViewById(R.id.show_map_btn)
+        mShowMapBtn.setOnClickListener{ handleShowClick() }
+
         mLatEditTxt = findViewById(R.id.lat_edit_text)
         mLonEditTxt = findViewById(R.id.lon_edit_text)
         mLatTxtView = findViewById(R.id.lat_txt)
@@ -43,11 +51,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun handleConvertClick() {
-        val latTxt = mLatEditTxt.text.toString()
-        val lonTxt = mLonEditTxt.text.toString()
+        latTxt = mLatEditTxt.text.toString()
+        lonTxt = mLonEditTxt.text.toString()
 
         if (latTxt?.isEmpty() == true || lonTxt?.isEmpty() == true) {
-            val toast = Toast(this)
+            val toast = Toast(applicationContext)
             toast.setText("A field is empty!")
             toast.duration = Toast.LENGTH_SHORT
             toast.show()
@@ -57,6 +65,15 @@ class MainActivity : AppCompatActivity() {
         mLatTxtView.setText("lat: " + getCoord(latTxt.toDouble()))
         mLonTxtView.setText("lon: " + getCoord(lonTxt.toDouble()))
         hideSofeKbd()
+        mShowMapBtn.isEnabled = true
+    }
+
+    fun handleShowClick() {
+        val intent = Intent()
+        intent.setClass(applicationContext, MapActivity::class.java)
+        intent.putExtra("lat", latTxt.toDouble())
+        intent.putExtra("lon", lonTxt.toDouble())
+        startActivity(intent)
     }
 
     fun hideSofeKbd() {
