@@ -79,6 +79,6 @@ class MainActivity : AppCompatActivity() {
     private fun hideSoftKbd() {
         val view: View = this.currentFocus ?: return
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
