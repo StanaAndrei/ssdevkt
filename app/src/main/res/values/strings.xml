@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ssdevkt</string>
+    <string name="marker_title">selected location</string>
 </resources>
