@@ -1,4 +1,4 @@
-package com.example.ssdevkt
+package com.example.ssdevkt.activities
 
 import android.content.Context
 import android.content.Intent
@@ -10,10 +10,10 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ssdevkt.R
 import kotlin.math.floor
 
 class MainActivity : AppCompatActivity() {
-
     companion object {
         private const val TAG = ".Main"
     }
@@ -26,12 +26,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var latTxt: String
     private lateinit var lonTxt: String
 
-
     private fun getCoord(coord: Double): String {
         val coordDeg: Int = coord.toInt()
         val coordMins: Double = (coord - floor(coord)) * 60
         val coordSecs: Double = (coordMins - floor(coordMins)) * 60
         return String.format("%d°%d'%.2f''", coordDeg, coordMins.toInt(), coordSecs)
+    }
+
+    private fun exportToCsv() {
+        //TODO("")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

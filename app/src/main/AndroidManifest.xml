@@ -17,10 +17,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyApDtgsYWZHIT4siZQiacaKEuo81bOnkeg" />
         <activity
-            android:name=".MapActivity"
+            android:name=".activities.MapActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
